@@ -12,19 +12,201 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: white;
+    color: orange;
     overflow: hidden;
-    background: #222;
+    background: #232323;
 }
+
+
+
+
+
+
+
 button,
 input[type="text"],
 input[type="number"],
 .select-container,
 select {
-    color: white;
-    background: #444;
-    border: none;
+    color: black;
+    background: #7d7d7d;
+    border: inset;
+    border-color: darkorange;
     font-size: 14px;
+    padding: 10px 8px;
+    cursor: hand;
+    outline: 0;
+
+}
+
+
+
+/* */
+button,
+input[type="text"],
+input[type="number"],
+.button-group1,
+button {
+
+  border-color: darkorange;
+    display: block;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: blink;
+    outline: none;
+    color: #222222;
+
+}
+
+button:hover {
+
+    background-color: darkorange;
+}
+
+button:active {
+
+    background-color: orange;
+    transform: translateY(2px);
+}
+
+body > * {
+    padding: 10px;
+    position: fixed;
+    overflow: scroll;
+    background: #232323;
+}
+
+header {
+    width: 26vw;
+    height: 80vh;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+
+
+article{
+
+
+    width: 23.4vw;
+    height: 51.4vh;
+    bottom: 0;
+    left: 0;
+
+
+}
+
+#timer {
+    font-family: sans-serif;
+    display: inline;
+    height: 20vh;
+    width: 26vw;
+    top: 0;
+    right: 0;
+    font-size: 20vh;
+    line-height: .8;
+    color: #00d500;
+    background-color: #232323;
+   text-align: center;
+}
+
+#driveSelect {
+
+    width: 20vw;
+    display: inline;
+    color: #222222;
+
+}
+
+#controlSelect {
+
+    width: 20vw;
+    display: inline;
+    color: #222222;
+
+}
+
+#button1{
+
+    border: outset;
+    border-color: #b95d00;
+}
+
+#button2{
+
+    border: outset;
+    border-color: #b95d00;
+}
+
+#button3{
+
+    border: outset;
+    border-color: #b95d00;
+}
+
+#Name{
+    font-family: sans-serif;
+    display: inline;
+    height: 10vh;
+    width: 60vw;
+    top: 1.5vw;
+    left: 18.5vw;
+    font-size: 5vh;
+    line-height: .8;
+    color: darkorange;
+    text-align: center;
+
+
+}
+
+#camera {
+    padding: 0;
+    position: fixed;
+    top: 13vh;
+    left: 25vw;
+    width: 47vw;
+    height: 50vh;
+    overflow: hidden;
+    background-color: whitesmoke;
+    background-size: cover;
+    background-image: url('http://192.168.0.27:9090/cam.mjpg');
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixilated;
+    image-rendering: optimize-contrast;
+    border: inset;
+    border-color: darkorange;
+}
+
+#rotationDisplay{
+
+    bottom: 0;
+
+
+}
+
+#rotationDial{
+
+    transform-origin: center;
+
+
+}
+
+
+
+/*button,
+input[type="text"],
+input[type="number"],
+.select-container,
+select {
+    color: white;
+    background: #222;
+    border: orange;
+    font-size: 18px;
     padding: 6px 8px;
     cursor: pointer;
     outline: 0;
@@ -49,30 +231,12 @@ input[type="checkbox"] {
 }
 
 /* Major interface panes, aside, article, header, etc. */
-body > * {
-    padding: 10px;
-    position: fixed;
-    overflow: scroll;
-    background: #222;
-}
-#timer {
-    font-family: monospace;
-    display: block;
-    height: 20vh;
-    width: 30vw;
-    top: 0;
-    left: 0;
-    font-size: 20vh;
-    line-height: .8;
-}
-header {
-    width: 20vw;
-    height: 20vh;
-    top: 0;
-    left: 30vw;
-    color: white;
-}
-#camera {
+
+
+
+
+
+/*#camera {
     padding: 0;
     position: fixed;
     bottom: 0;
@@ -82,9 +246,9 @@ header {
     overflow: hidden;
     background-color: #333;
     /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
-    background-image: url('LINK TO CAMERA SOURCE HERE');
-}
-#tuning {
+   /* background-image: url('LINK TO CAMERA SOURCE HERE');
+
+/*#tuning {
     width: 50vw;
     height: 80vh;
     bottom: 0;
@@ -116,7 +280,7 @@ text {
     stroke: none;
     fill: white;
 }
-#gyro {
+/*#gyro {
     width: 175px;
     height: 175px;
     margin-left: 30px;
