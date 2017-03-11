@@ -1,9 +1,9 @@
  
 var ui = {
 
+    robotConnection: document.getElementById('robotConnection'),
     drive: document.getElementById('driveSelect'),
-    driveOutput: document.getElementById('driveMonitor'),
-    autoSelect: document.getElementById('autoSelect'),
+    control: document.getElementById('controlSelect'),
     autoMonitor: document.getElementById('autoMonitor'),
     timer: document.getElementById('timer'),
 
@@ -17,6 +17,7 @@ autoSelect: {
         buttonVal2: false,
         buttonVal3: false,
 },
+
 
 DriveMonitor: {
 
@@ -36,162 +37,123 @@ DriveMonitor: {
 }
 
 
+NetworkTables.addRobotConnectionListener(onRobotConnection, true);
+NetworkTables.addGlobalListener(onValueChanged, true);
 
 
-function onValueChanged(key, value) {
-    // Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
-    if (value === 'true') value = true;
-    if (value === 'false') value = false;
+
+function onRobotConnection(connected) {
+    var state = connected ? '[ Robot connected ]' : '[ Robot disconnected ]';
+    console.log(state);
+    ui.robotConnection.innerHTML = state;
+
+    function onValueChanged(key, value) {
+        // Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
+        if (value === 'true') value = true;
+        if (value === 'false') value = false;
 
 
-    switch (key) {
+        switch (key) {
 
-        case '/SmartDashboard/autoSelect':
-            ui.button1.onclick = function() {
+            case '/SmartDashboard/driveSelect':
+                ui.drive.value = value;
+                break;
 
-                ui.buttonVal1 = true;
+            case '/SmartDashboard/controlSelect':
+                ui.control.value = value;
+                break;
 
-            }
-    break;
+            case '/SmartDashboard/autoSelect':
+                ui.button1.onclick = function () {
+                    ui.buttonVal1 = true;
+                }
+                break;
 
-        case '/SmartDashboard/autoSelect':
-            ui.button2.onclick = function(){
+            case '/SmartDashboard/autoSelect':
+                ui.button2.onclick = function () {
+                    ui.buttonVal2 = true;
+                }
+                break;
 
-                ui.buttonVal2 = true;
+            case '/SmartDashboard/autoSelect':
+                ui.button3.onclick = function () {
+                    ui.buttonVal3 = true;
+                }
+                break;
 
-            }
-            break;
+            case '/SmartDashboard/autoMonitor/DriveSubsystem | autoL | autoR | autoM' :
 
-        case '/SmartDashboard/autoSelect':
-            ui.button3.onclick = function(){
+                if (ui.autoL = true) {
+                    ui.autoMonitor.innerHTML = '[Left autonomous program running]';
+                } else if (ui.autoR = true) {
+                    ui.autoMonitor.innerHTML = '[Right autonomous program running]';
+                } else if (ui.autoM = true) {
+                    ui.autoMonitor.innerHTML = '[Center autonomous program running]';
+                } else {
+                    ui.autoMonitor.innerHTML = '[No autonomous program running]';
+                }
 
-                ui.buttonVal3 = true;
+                break;
 
-            }
-            break;
+            case '/SmartDashboard /DriveSubsystem/ NavX | Yaw':
+                ui.Dial.Value = value;
+                ui.Dial.visualValue = Math.floor(ui.Dial.Value - ui.Dial.resetValue);
+                if (ui.Dial.visualValue < 0) { // Corrects for negative values
+                    ui.Dial.visualValue += 360;
+                }
+                ui.Dial.indicator.style.transform = ('rotate(' + ui.Dial.visualValue + 'deg)');
 
-        case '/SmartDashboard/autoMonitor/autoSelect | buttonVal1 | buttonVal2 | buttonVal3' :
+            case '/SmartDashboard/timeRunning':
 
-            if(ui.buttonVal1 = true){
-                ui.autoMonitor.innerHTML = 'Left autonomous program running';
-            }else if(ui.buttonVal2 = true) {
-                ui.autoMonitor.innerHTML = 'Right autonomous program running';
-            }else if(ui.buttonVal3 = true){
-                ui.autoMonitor.innerHTML = 'Center autonomous program running';
-            }else{
-                ui.autoMonitor.innerHTML = 'No autonomous program running';
-            }
+                var s = 135;
+                if (value < 0) {
 
-            break;
+                    ui.timer.style.color = "#00d500";
 
-        case '/SmartDashboard /DriveSubsystem/ NavX | Yaw':
-            ui.Dial.Value = value;
-            ui.Dial.visualValue = Math.floor(ui.Dial.Value - ui.Dial.resetValue);
-            if (ui.Dial.visualValue < 0) { // Corrects for negative values
-                ui.Dial.visualValue += 360;
-            }
-            ui.Dial.indicator.style.transform = ('rotate(' + ui.Dial.visualValue + 'deg)');
+                    var countdown = setInterval(function () {
+                        s--; // Subtracts one second
 
-        case '/SmartDashboard/timeRunning':
+                        var m = Math.floor(s / 60);
+                        // Create seconds number that will actually be displayed after minutes are subtracted
+                        var visualS = (s % 60);
 
-            var s = 135;
-            if (value < 0) {
+                        // Add leading zero if seconds is one digit long, for proper time formatting.
+                        visualS = visualS < 10 ? '0' + visualS : visualS;
 
-                ui.timer.style.color = "#00d500";
+                        if (s < 0) {
+                            // Stop countdown when timer reaches zero
+                            clearTimeout(countdown);
+                            return;
+                        } else if (s <= 15) {
+                            // Flash timer if less than 15 seconds left
+                            ui.timer.style.color = 'red';
+                        } else if (s <= 60) {
+                            // Solid red timer when less than 30 seconds left.
+                            ui.timer.style.color = 'yellow';
+                        }
+                        ui.timer.innerHTML = m + ':' + visualS;
+                    }, 1000);
+                } else {
+                    s = 135;
+                }
 
-                var countdown = setInterval(function() {
-                    s--; // Subtracts one second
-
-                    var m = Math.floor(s / 60);
-                    // Create seconds number that will actually be displayed after minutes are subtracted
-                    var visualS = (s % 60);
-
-                    // Add leading zero if seconds is one digit long, for proper time formatting.
-                    visualS = visualS < 10 ? '0' + visualS : visualS;
-
-                    if (s < 0) {
-                        // Stop countdown when timer reaches zero
-                        clearTimeout(countdown);
-                        return;
-                    } else if (s <= 15) {
-                        // Flash timer if less than 15 seconds left
-                        ui.timer.style.color = '#FF3030';
-                    } else if (s <= 30) {
-                        // Solid red timer when less than 30 seconds left.
-                        ui.timer.style.color = 'orange';
-                    }
-                    ui.timer.innerHTML = m + ':' + visualS;
-                }, 1000);
-            } else {
-                s = 135;
-            }
-            NetworkTables.setValue(key, false);
-            break;
+                NetworkTables.setValue(key, false);
+                break;
 
 
+        }
+
+    };
+
+
+    ui.Dial.container.onclick = function () {
+
+        ui.Dial.offset = ui.Dial.Value;
+
+        onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Dial.Value);
     }
 
-};
-
-
-
-ui.Dial.container.onclick = function() {
-
-    ui.Dial.offset = ui.Dial.Value;
-
-    onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Dial.Value);
-};
-
-
-
-
-
-/*NetworkTables.addGlobalListener(onValueChanged, true);
-
-function onValueChanged(key, driveToggle) {
-
-    if (driveToggle == 'true') {
-        driveToggle = true;
-    } else if (driveToggle == 'false') {
-        driveToggle = false;
-    }
-
-
-
-    switch (key) {
-        case '/SmartDashboard/driveSelect':
-
-            ui.drive.checked = driveToggle;
-            break;
-
-
-            break;
-        case '/SmartDashboard/driveMonitor':
-            ui.driveOutput.innerHTML = driveToggle ? 'Arcade Drive Selected' : 'Tank drive selected';
-            break;
-
-
-    }
 }
-
-
-
-
-
-ui.drive.onclick = function(){
-    NetworkTables.setValue('/SmartDashboard/driveMonitor'  , !NetworkTables.getValue('/SmartDashboard/driveMonitor'));
-
-
-
-
-
-
-
-
- ui.gyro.number.innerHTML = ui.gyro.visualVal + 'º';
-
-*/
-
 
 
 

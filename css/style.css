@@ -133,19 +133,19 @@ article{
 #button1{
 
     border: outset;
-    border-color: #b95d00;
+    border-color: darkorange;
 }
 
 #button2{
 
     border: outset;
-    border-color: #b95d00;
+    border-color: darkorange;
 }
 
 #button3{
 
     border: outset;
-    border-color: #b95d00;
+    border-color: darkorange;
 }
 
 #Name{
@@ -180,6 +180,14 @@ article{
     image-rendering: optimize-contrast;
     border: inset;
     border-color: darkorange;
+}
+
+#robotConnection{
+
+    color: darkorange;
+    bottom: 20vh;
+    left: 80.5vh;
+    font-size: 25px;
 }
 
 #rotationDisplay{
