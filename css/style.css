@@ -17,12 +17,6 @@ body {
     background: #232323;
 }
 
-
-
-
-
-
-
 button,
 input[type="text"],
 input[type="number"],
@@ -39,9 +33,6 @@ select {
 
 }
 
-
-
-/* */
 button,
 input[type="text"],
 input[type="number"],
@@ -84,10 +75,6 @@ header {
     bottom: 0;
     right: 0;
 }
-
-
-
-
 
 article{
 
@@ -155,7 +142,7 @@ article{
     width: 60vw;
     top: 1.5vw;
     left: 18.5vw;
-    font-size: 5vh;
+    font-size: 7vh;
     line-height: .8;
     color: darkorange;
     text-align: center;
@@ -166,14 +153,14 @@ article{
 #camera {
     padding: 0;
     position: fixed;
-    top: 13vh;
+    top: 15vh;
     left: 25vw;
     width: 47vw;
-    height: 50vh;
+    height: 65vh;
     overflow: hidden;
     background-color: whitesmoke;
     background-size: cover;
-    background-image: url('http://192.168.0.27:9090/cam.mjpg');
+    background-image: url('http://Irrational.local:8080/cam.mjpg');
     image-rendering: optimizeSpeed;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixilated;
@@ -184,15 +171,31 @@ article{
 
 #robotConnection{
 
+    text-align: center;
     color: darkorange;
-    bottom: 20vh;
+    bottom: 6vh;
     left: 80.5vh;
     font-size: 25px;
 }
 
+#timeWarning {
+    background-color: transparent;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    color: red;
+    bottom: 40vh;
+    right: 94vh;
+    font-size: 75px;
+    font-family: "Impact";
+
+
+}
+
 #rotationDisplay{
 
-    bottom: 0;
+
+    top: 0;
 
 
 }
@@ -204,125 +207,3 @@ article{
 
 }
 
-
-
-/*button,
-input[type="text"],
-input[type="number"],
-.select-container,
-select {
-    color: white;
-    background: #222;
-    border: orange;
-    font-size: 18px;
-    padding: 6px 8px;
-    cursor: pointer;
-    outline: 0;
-}
-.select-container {
-    padding: 0;
-    display: inline-block;
-}
-select {
-    border: none;
-    background: none;
-    color: white;
-    height: 25px;
-}
-input[type="text"],
-input[type="number"] {
-    cursor: text;
-}
-input[type="checkbox"] {
-    -webkit-filter: saturate(0);
-    filter: saturate(0);
-}
-
-/* Major interface panes, aside, article, header, etc. */
-
-
-
-
-
-/*#camera {
-    padding: 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 50vw;
-    height: 80vh;
-    overflow: hidden;
-    background-color: #333;
-    /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
-   /* background-image: url('LINK TO CAMERA SOURCE HERE');
-
-/*#tuning {
-    width: 50vw;
-    height: 80vh;
-    bottom: 0;
-    left: 0;
-}
-#tuning div {
-    margin: 20px 0;
-}
-#tuning p {
-    margin-bottom: 10px;
-}
-article {
-    top: 0;
-    left: 50vw;
-    height: 100vh;
-    width: 35vw;
-}
-svg * {
-    stroke: white;
-    fill: #222;
-    stroke-width: 2;
-    -webkit-transform-origin: center;
-    -ms-transform-origin: center;
-    transform-origin: center;
-}
-text {
-    font-size: 16px;
-    letter-spacing: 2px;
-    stroke: none;
-    fill: white;
-}
-/*#gyro {
-    width: 175px;
-    height: 175px;
-    margin-left: 30px;
-    margin-top: 15px;
-}
-#gyro-arm {
-    -webkit-transform-origin: bottom;
-    -ms-transform-origin: bottom;
-    transform-origin: bottom;
-}
-#gyro-number {
-    font-size: 25px;
-    text-anchor: middle;
-}
-#robot-diagram {
-    position: absolute;
-    bottom: 1px;
-    right: 1vw;
-}
-#robot-arm {
-    -webkit-transform-origin: right;
-    -ms-transform-origin: right;
-    transform-origin: right;
-}
-#team {
-    font-size: 28px;
-    letter-spacing: -1px;
-}
-aside {
-    right: 0;
-    top: 0;
-    width: 15vw;
-    height: 100vh;
-}
-aside > * {
-    margin-bottom: 20px;
-}
