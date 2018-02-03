@@ -12,7 +12,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: orange;
+    color: white;
     overflow: hidden;
     background: #232323;
 }
@@ -78,11 +78,24 @@ header {
 
 article{
 
-
     width: 23.4vw;
     height: 51.4vh;
     bottom: 0;
     left: 0;
+
+
+}
+
+#title {
+
+    font-family: "Impact";
+    font-size: 8vh;
+    color: orange;
+    text-align: center;
+    top: 0;
+    left: 25vw;
+
+
 
 
 }
@@ -92,63 +105,20 @@ article{
     display: inline;
     height: 20vh;
     width: 26vw;
-    top: 0;
+    top: 10vh;
     right: 0;
     font-size: 20vh;
     line-height: .8;
     color: #00d500;
     background-color: #232323;
    text-align: center;
+    border-bottom-style: groove;
+    border-color: orange;
+    border-width: 3vh;
 }
 
-#driveSelect {
-
-    width: 20vw;
-    display: inline;
-    color: #222222;
-
-}
-
-#controlSelect {
-
-    width: 20vw;
-    display: inline;
-    color: #222222;
-
-}
-
-#button1{
-
-    border: outset;
-    border-color: darkorange;
-}
-
-#button2{
-
-    border: outset;
-    border-color: darkorange;
-}
-
-#button3{
-
-    border: outset;
-    border-color: darkorange;
-}
-
-#Name{
-    font-family: sans-serif;
-    display: inline;
-    height: 10vh;
-    width: 60vw;
-    top: 1.5vw;
-    left: 18.5vw;
-    font-size: 7vh;
-    line-height: .8;
-    color: darkorange;
-    text-align: center;
 
 
-}
 
 #camera {
     padding: 0;
@@ -169,41 +139,4 @@ article{
     border-color: darkorange;
 }
 
-#robotConnection{
-
-    text-align: center;
-    color: darkorange;
-    bottom: 6vh;
-    left: 80.5vh;
-    font-size: 25px;
-}
-
-#timeWarning {
-    background-color: transparent;
-    z-index: 1;
-    position: absolute;
-    text-align: center;
-    color: red;
-    bottom: 40vh;
-    right: 94vh;
-    font-size: 75px;
-    font-family: "Impact";
-
-
-}
-
-#rotationDisplay{
-
-
-    top: 0;
-
-
-}
-
-#rotationDial{
-
-    transform-origin: center;
-
-
-}
 

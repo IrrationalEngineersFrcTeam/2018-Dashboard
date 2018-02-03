@@ -4,32 +4,8 @@
 
 var ui = {
 
-    robotConnection: document.getElementById('robotConnection'),
-    drive: document.getElementById('driveSelect'),
-    control: document.getElementById('controlSelect'),
-    autoMonitor: document.getElementById('autoMonitor'),
+
     timer: document.getElementById('timer'),
-    timeWarning: document.getElementById('timeWarning'),
-
-autoSelect: {
-
-    autoSelect: document.getElementById('button-group1'),
-    button1: document.getElementById('button1'),
-    button2: document.getElementById('button2'),
-    button3: document.getElementById('button3'),
-
-
-},
-
-
-
-    Dial: {
-        container: document.getElementById('rotationDisplay'),
-        indicator: document.getElementById('rotationDial'),
-        Value: 0,
-        visualValue: 0,
-        resetValue: 0
-    }
 
 };
 
@@ -58,6 +34,7 @@ function onRobotConnection(connected) {
         if (value === 'false') value = false;
 
 
+
         switch (key) {
 
 
@@ -72,15 +49,17 @@ function onRobotConnection(connected) {
 
 
 
-            case '/SmartDashboard/autoSelect/input1':
-                ui.button1.onclick = function () {
-                       ui.input1 = true;
-                };
+            case '/SmartDashboard/button1':
+                ui.name.innerHTML = "test";
+
+
+
                 break;
 
             case '/SmartDashboard/autoSelect/input2':
                 ui.button2.onclick = function () {
                     ui.input2 = true;
+
                 };
                 break;
 
@@ -92,11 +71,11 @@ function onRobotConnection(connected) {
 
             case '/SmartDashboard/autoL' :
 
-                if (ui.autoL === true) {
+                if (value === true) {
                     ui.autoMonitor.innerHTML = '[Left autonomous program running]';
-                } else if (ui.autoR === true) {
+                } else if (value === true) {
                     ui.autoMonitor.innerHTML = '[Right autonomous program running]';
-                } else if (ui.autoM === true) {
+                } else if (value === true) {
                     ui.autoMonitor.innerHTML = '[Center autonomous program running]';
                 } else {
                     ui.autoMonitor.innerHTML = '[No autonomous program running]';
@@ -109,7 +88,7 @@ function onRobotConnection(connected) {
                 ui.Dial.Value = value ;
                 ui.Dial.visualValue = Math.floor(ui.Dial.Value - ui.Dial.resetValue);
                 if (ui.Dial.visualValue < 0) { // Corrects for negative values
-                    ui.Dial.visualValue += 180;
+                    ui.Dial.visualValue += 360;
                 }
                 ui.Dial.indicator.style.transform = ('rotate(' + ui.Dial.visualValue + 'deg)');
 
@@ -171,5 +150,11 @@ function onRobotConnection(connected) {
 
         onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Dial.Value);
     };
+
+ui.button1.onclick = function () {
+    //   ui.input1 = true;
+
+    NetworkTables.setValue('/SmartDashboard/input1', true);
+};
 
 

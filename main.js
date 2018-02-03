@@ -1,3 +1,5 @@
+/* to start the Dashboard:  py -3.6 -m pynetworktables2js --robot [IP address]   */
+
 'use strict';
 
 const electron = require('electron');
