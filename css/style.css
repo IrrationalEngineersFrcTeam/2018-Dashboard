@@ -56,20 +56,17 @@ article{
 }
 
 #timer {
-
-    top: 2vh;
-    left: 2vh;
-    font-family: "Impact";
+    font-family: sans-serif;
     display: inline;
     height: 20vh;
-    width: 20vw;
+    width: 26vw;
+    top: 0;
+    left: 0;
     font-size: 20vh;
     line-height: .8;
     color: #00d500;
     background-color: #232323;
     text-align: center;
-
-
 }
 
 #robotConnection {

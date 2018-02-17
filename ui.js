@@ -13,9 +13,9 @@ var ui = {
 
     Minimap: {
 
-        fieldDisplay: document.getElementById('fieldDisplay'),
-        triOne: document.getElementById('triOne'),
-        value: 45,
+        container: document.getElementById('fieldDisplay'),
+        indicator: document.getElementById('triOne'),
+        Value: 0,
         visualValue: 0,
         resetValue: 0
     }
@@ -23,15 +23,17 @@ var ui = {
 };
 
 
+ui.indicator.style.transform="rotate(45deg)";
+
+
+
 NetworkTables.addGlobalListener(onValueChanged, true);
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
-ui.Minimap.Value = value ;
-ui.Minimap.visualValue = Math.floor(ui.Minimap.Value - ui.Minimap.resetValue);
-if (ui.Minimap.visualValue < 0) { // Corrects for negative values
-    ui.Minimap.visualValue += 360;
-}
-ui.Minimap.triOne.style.transform = ('rotate(' + ui.Minimap.visualValue + 'deg)');
+
+
+
+NetworkTables.setValue(key, false);
 
 
 
@@ -66,13 +68,14 @@ function onRobotConnection(connected) {
                 if (ui.Minimap.visualValue < 0) { // Corrects for negative values
                     ui.Minimap.visualValue += 360;
                 }
-                ui.Minimap.triOne.style.transform = ('rotate(' + ui.Minimap.visualValue + 'deg)');
+                ui.Minimap.indicator.style.transform = ('rotate(' + ui.Minimap.visualValue + 'deg)');
 
                 break;
 
             case '/SmartDashboard/timeRunning':
 
-                var s = 135;
+
+                var s = 150;
 
                 if (value === true) {
 
@@ -85,9 +88,25 @@ function onRobotConnection(connected) {
 
                         var visualS = (s % 60);
 
-                        visualS = visualS < 10 ? '0' + visualS : visualS;                        if (s < 0) {                            // Stop countdown when timer reaches zero                            clearTimeout(countdown);                            return;                        } else if (s <= 30) {                            ui.timer.style.color = 'red';                            ui.timeWarning.innerHTML = "Go for the Climb!"                            ui.timeWarning.style.color = (s % 2 === 0) ? 'red' : 'transparent';                        } else if (s <= 75) {                            ui.timer.style.color = 'yellow';                        }                        ui.timer.innerHTML = m + ':' + visualS;                    }, 1000);
+
+                        visualS = visualS < 10 ? '0' + visualS : visualS;
+
+                        if (s < 0) {
+                            // Stop countdown when timer reaches zero
+                            clearTimeout(countdown);
+                            return;
+                        } else if (s <= 30) {
+
+                            ui.timer.style.color = 'red';
+
+                        } else if (s <= 75) {
+
+                            ui.timer.style.color = 'yellow';
+                        }
+                        ui.timer.innerHTML = m + ':' + visualS;
+                    }, 1000);
                 } else {
-                    s = 135;
+                    s = 150;
                 }
 
 
