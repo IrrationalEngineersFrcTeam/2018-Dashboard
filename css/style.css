@@ -14,52 +14,7 @@ body {
     user-select: none;
     color: white;
     overflow: hidden;
-    background: #232323;
-}
-
-button,
-input[type="text"],
-input[type="number"],
-.select-container,
-select {
-    color: black;
     background: #7d7d7d;
-    border: inset;
-    border-color: darkorange;
-    font-size: 14px;
-    padding: 10px 8px;
-    cursor: hand;
-    outline: 0;
-
-}
-
-button,
-input[type="text"],
-input[type="number"],
-.button-group1,
-button {
-
-  border-color: darkorange;
-    display: block;
-    padding: 10px 20px;
-    font-size: 15px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: blink;
-    outline: none;
-    color: #222222;
-
-}
-
-button:hover {
-
-    background-color: darkorange;
-}
-
-button:active {
-
-    background-color: orange;
-    transform: translateY(2px);
 }
 
 body > * {
@@ -86,14 +41,14 @@ article{
 
 }
 
-#title {
+ #title {
 
     font-family: "Impact";
     font-size: 8vh;
     color: orange;
     text-align: center;
     top: 0;
-    left: 25vw;
+    left: 26vw;
 
 
 
@@ -101,42 +56,59 @@ article{
 }
 
 #timer {
-    font-family: sans-serif;
+
+    top: 2vh;
+    left: 2vh;
+    font-family: "Impact";
     display: inline;
     height: 20vh;
-    width: 26vw;
-    top: 10vh;
-    right: 0;
+    width: 20vw;
     font-size: 20vh;
     line-height: .8;
     color: #00d500;
     background-color: #232323;
-   text-align: center;
-    border-bottom-style: groove;
-    border-color: orange;
-    border-width: 3vh;
+    text-align: center;
+
+
+}
+
+#robotConnection {
+
+    bottom: 5vh;
+    left: 60vh;
+    backgrond-color: #232323;
+    color: orange;
+    hight: 15vh;
+    width: 80vh;
+    text-align: center;
+    font-size: 5vh;
+    border-bottom: groove;
+    border-bottom-color: darkorange;
+
+
+
+
 }
 
 
 
+#triOne {
 
-#camera {
-    padding: 0;
-    position: fixed;
-    top: 15vh;
-    left: 25vw;
-    width: 47vw;
-    height: 65vh;
-    overflow: hidden;
-    background-color: whitesmoke;
-    background-size: cover;
-    background-image: url('http://Irrational.local:8080/cam.mjpg');
-    image-rendering: optimizeSpeed;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: pixilated;
-    image-rendering: optimize-contrast;
-    border: inset;
+    transform-origin: center;
+}
+
+#fieldDisplay{
+
+    bottom: 20vh;
+    right: 53vh;
+    width: 100vh;
+    height: 50vh;
+    background-color: #232323;
+    border-style: groove;
     border-color: darkorange;
+    border-width: 1vh;
+
+
 }
 
 

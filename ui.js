@@ -1,11 +1,24 @@
 
-/* to start the Dashboard:  py -3.6 -m pynetworktables2js --robot [IP address]   */
+
 
 
 var ui = {
 
 
     timer: document.getElementById('timer'),
+    robotConnection: document.getElementById('robotConnection'),
+
+
+
+
+    Minimap: {
+
+        fieldDisplay: document.getElementById('fieldDisplay'),
+        triOne: document.getElementById('triOne'),
+        value: 45,
+        visualValue: 0,
+        resetValue: 0
+    }
 
 };
 
@@ -13,6 +26,12 @@ var ui = {
 NetworkTables.addGlobalListener(onValueChanged, true);
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
+ui.Minimap.Value = value ;
+ui.Minimap.visualValue = Math.floor(ui.Minimap.Value - ui.Minimap.resetValue);
+if (ui.Minimap.visualValue < 0) { // Corrects for negative values
+    ui.Minimap.visualValue += 360;
+}
+ui.Minimap.triOne.style.transform = ('rotate(' + ui.Minimap.visualValue + 'deg)');
 
 
 
@@ -39,62 +58,19 @@ function onRobotConnection(connected) {
 
 
 
-            case '/SmartDashboard/driveSelect':
-                ui.drive.value = value;
-                break;
-
-            case '/SmartDashboard/controlSelect':
-                ui.control.value = value;
-                break;
-
-
-
-            case '/SmartDashboard/button1':
-                ui.name.innerHTML = "test";
-
-
-
-                break;
-
-            case '/SmartDashboard/autoSelect/input2':
-                ui.button2.onclick = function () {
-                    ui.input2 = true;
-
-                };
-                break;
-
-            case '/SmartDashboard/autoSelect/input3':
-                ui.button3.onclick = function () {
-                    ui.input3 = true;
-                };
-                break;
-
-            case '/SmartDashboard/autoL' :
-
-                if (value === true) {
-                    ui.autoMonitor.innerHTML = '[Left autonomous program running]';
-                } else if (value === true) {
-                    ui.autoMonitor.innerHTML = '[Right autonomous program running]';
-                } else if (value === true) {
-                    ui.autoMonitor.innerHTML = '[Center autonomous program running]';
-                } else {
-                    ui.autoMonitor.innerHTML = '[No autonomous program running]';
-                }
-
-                break;
 
             case '/SmartDashboard/Yaw':
 
-                ui.Dial.Value = value ;
-                ui.Dial.visualValue = Math.floor(ui.Dial.Value - ui.Dial.resetValue);
-                if (ui.Dial.visualValue < 0) { // Corrects for negative values
-                    ui.Dial.visualValue += 360;
+                ui.Minimap.Value = value ;
+                ui.Minimap.visualValue = Math.floor(ui.Minimap.Value - ui.Minimap.resetValue);
+                if (ui.Minimap.visualValue < 0) { // Corrects for negative values
+                    ui.Minimap.visualValue += 360;
                 }
-                ui.Dial.indicator.style.transform = ('rotate(' + ui.Dial.visualValue + 'deg)');
+                ui.Minimap.triOne.style.transform = ('rotate(' + ui.Minimap.visualValue + 'deg)');
+
+                break;
 
             case '/SmartDashboard/timeRunning':
-
-
 
                 var s = 135;
 
@@ -109,26 +85,7 @@ function onRobotConnection(connected) {
 
                         var visualS = (s % 60);
 
-
-                        visualS = visualS < 10 ? '0' + visualS : visualS;
-
-                        if (s < 0) {
-                            // Stop countdown when timer reaches zero
-                            clearTimeout(countdown);
-                            return;
-                        } else if (s <= 30) {
-
-                            ui.timer.style.color = 'red';
-
-                            ui.timeWarning.innerHTML = "Go for the Climb!"
-                            ui.timeWarning.style.color = (s % 2 === 0) ? 'red' : 'transparent';
-
-                        } else if (s <= 75) {
-
-                            ui.timer.style.color = 'yellow';
-                        }
-                        ui.timer.innerHTML = m + ':' + visualS;
-                    }, 1000);
+                        visualS = visualS < 10 ? '0' + visualS : visualS;                        if (s < 0) {                            // Stop countdown when timer reaches zero                            clearTimeout(countdown);                            return;                        } else if (s <= 30) {                            ui.timer.style.color = 'red';                            ui.timeWarning.innerHTML = "Go for the Climb!"                            ui.timeWarning.style.color = (s % 2 === 0) ? 'red' : 'transparent';                        } else if (s <= 75) {                            ui.timer.style.color = 'yellow';                        }                        ui.timer.innerHTML = m + ':' + visualS;                    }, 1000);
                 } else {
                     s = 135;
                 }
@@ -144,17 +101,15 @@ function onRobotConnection(connected) {
     }
 
 
-    ui.Dial.container.onclick = function () {
+    ui.Minimap.fieldDisplay.onclick = function () {
 
-        ui.Dial.offset = ui.Dial.Value;
+        ui.Minimap.offset = ui.Minimap.Value;
 
-        onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Dial.Value);
-    };
+        onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Minimap.Value);
 
-ui.button1.onclick = function () {
-    //   ui.input1 = true;
 
-    NetworkTables.setValue('/SmartDashboard/input1', true);
+
+
 };
 
 
