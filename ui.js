@@ -24,15 +24,13 @@ var ui = {
 };
 
 
-var TestVal = true;
+
 
 NetworkTables.addGlobalListener(onValueChanged, true);
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
 
 
-    ui.Test.innerHTML = "Working!";
-    ui.Minimap.indicator.style.transform = "rotate(45deg)"
 
 
 NetworkTables.setValue(key, false);

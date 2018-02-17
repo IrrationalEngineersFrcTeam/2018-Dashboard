@@ -92,6 +92,9 @@ article{
 #triOne {
 
     transform-origin: center;
+    backgoundcolor: blue;
+    color: blue;
+
 }
 
 #fieldDisplay{
