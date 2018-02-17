@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f9001621-1f1b-4e10-af8d-2ccc5e18c492" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui.js" afterPath="$PROJECT_DIR$/ui.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -803,7 +800,7 @@
       <workItem from="1517682134396" duration="8333000" />
       <workItem from="1518828580504" duration="7980000" />
       <workItem from="1518893823037" duration="1515000" />
-      <workItem from="1518895471109" duration="11276000" />
+      <workItem from="1518895471109" duration="11287000" />
     </task>
     <task id="LOCAL-00001" summary="New Stuff.">
       <created>1518895523295</created>
@@ -840,11 +837,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518904507624</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="New Stuff.">
+      <created>1518907106398</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1518907106398</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214129000" />
+    <option name="totallyTimeSpent" value="214140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
