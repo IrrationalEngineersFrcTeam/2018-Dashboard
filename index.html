@@ -12,21 +12,26 @@
 <body>
 
 <div id="title">Team 6239 SmartDashboard</div>
+<div id="rightBlock"></div>
+<div id="leftBlock"></div>
 <div id="timer">2:30</div>
 <div id="robotConnection">Unknown Robot State</div>
 
 
-<svg id="fieldDisplay">
+<div id="buttonGroup1">
+    <h1>Select Starting Position</h1>
+    <button id="button1" type="button">left</button>
+    <button id="button2" type="button">Right</button>
+    <button id="button3" type="button">Center</button>
+</div>
 
-<g id="triOne">
+<svg id="fieldDisplay"></svg>
 
-
-    <circle cx="5" cy="5" r="10" stroke-width="2" stroke="orange"></circle>
-    <polygon  points="2,4 5,14 8,4 2,4"  fill="orange" ></polygon>
-
-</g>
-
+<svg id="robotImage" >
+    <circle r="9"  stroke-width="1" stroke="orange" fill="transparent"></circle>
+    <polygon points="-5,9 0,-2 5,9 -5,9" fill="orange"></polygon>
 </svg>
+
 
 <script src="/networktables/networktables.js"></script>
 <script src="ui.js"></script>

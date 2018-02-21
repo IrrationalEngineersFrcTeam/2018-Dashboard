@@ -7,47 +7,38 @@ var ui = {
 
     timer: document.getElementById('timer'),
     robotConnection: document.getElementById('robotConnection'),
-    Test: document.getElementById('Test'),
-
-
-
 
     Minimap: {
 
         container: document.getElementById('fieldDisplay'),
-        indicator: document.getElementById('triOne'),
+        indicator: document.getElementById('robotImage'),
+        indicatorElement1: document.getElementById('polyOne'),
+        indicatorElement2: document.getElementById('polyOne')
         Value: 0,
         visualValue: 0,
         resetValue: 0
-    }
+    },
+
+    PositionSelector: {
+        buttonGroup1: document.getElementById('buttonGroup1'),
+        button1: document.getElementById('button1'),
+        button2: document.getElementById('button2'),
+        button3: document.getElementById('button3'),
+
+    },
 
 };
-
 
 
 
 NetworkTables.addGlobalListener(onValueChanged, true);
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
-
-
-
-
-NetworkTables.setValue(key, false);
-
-
-
 function onRobotConnection(connected) {
-    var state = connected ?   'Robot connected' : 'Robot disconnected'   ;
+    var state = connected ?   'Robot connected' : 'Robot disconnected';
     console.log(state);
     ui.robotConnection.innerHTML = state;
 }
-
-
-
-
-
-
 
     function onValueChanged(key, value) {
         // Sometimes, NetworkTables will pass booleans as strings. This corrects for that.
@@ -57,9 +48,6 @@ function onRobotConnection(connected) {
 
 
         switch (key) {
-
-
-
 
             case '/SmartDashboard/Yaw':
 
@@ -120,15 +108,18 @@ function onRobotConnection(connected) {
     }
 
 
-    ui.Minimap.fieldDisplay.onclick = function () {
+    ui.Minimap.onclick = function () {
 
         ui.Minimap.offset = ui.Minimap.Value;
 
         onValueChanged('/SmartDashboard/drive/navX/yaw', ui.Minimap.Value);
 
-
-
-
 };
+
+ui.button1.onclick = function () {
+
+    ui.Minimap.indicator.style.transform = "translateY(2px)"
+};
+
 
 
