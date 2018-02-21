@@ -13,7 +13,7 @@ var ui = {
         container: document.getElementById('fieldDisplay'),
         indicator: document.getElementById('robotImage'),
         indicatorElement1: document.getElementById('polyOne'),
-        indicatorElement2: document.getElementById('polyOne')
+        indicatorElement2: document.getElementById('polyOne'),
         Value: 0,
         visualValue: 0,
         resetValue: 0
